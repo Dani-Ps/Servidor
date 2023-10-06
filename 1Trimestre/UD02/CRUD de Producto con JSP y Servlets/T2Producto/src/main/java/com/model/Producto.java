@@ -36,7 +36,14 @@ public class Producto implements Serializable {
         setStock(stock);
     }
 
-    /**
+    
+
+	public Producto(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
+	/**
      * Obtiene el nombre del producto.
      *
      * @return El nombre del producto.

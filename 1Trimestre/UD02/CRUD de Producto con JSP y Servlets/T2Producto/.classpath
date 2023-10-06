@@ -15,8 +15,9 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-2.0.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Busta/Documents/Conectores/mysql-connector-j-8.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Busta/Documents/mysql-connector-j-8.1.0/mysql-connector-j-8.1.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Busta/Documents/apache-tomcat-10.1.12/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Busta/Documents/apache-tomcat-10.1.12/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mysql-connector-j-8.1.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
