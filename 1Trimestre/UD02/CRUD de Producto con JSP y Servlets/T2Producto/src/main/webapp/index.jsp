@@ -11,7 +11,7 @@
 	<!--<a href="ListProducto">Ver listado y opciones, aquí.</a>-->
 
 	<!-- Formulario para redirigir a la página de listado de productos -->
-	<form action="ListarProducto" method="get">
+	<form action="ListarProducto" method="post">
 		<input type="submit" value="Ver listado y opciones">
 	</form>
 </body>

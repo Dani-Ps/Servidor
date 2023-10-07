@@ -19,7 +19,7 @@
 <body>
 	<!-- Obtener la lista de productos del atributo request -->
 	<%
-	List<Producto> productos = (List<Producto>) request.getAttribute("PRODUCTOS");
+	List<Producto> productos =(List<Producto>) request.getAttribute("PRODUCTOS");
 	%>
 	<!-- Título de la página -->
 	<h1>Listado de Productos</h1>
