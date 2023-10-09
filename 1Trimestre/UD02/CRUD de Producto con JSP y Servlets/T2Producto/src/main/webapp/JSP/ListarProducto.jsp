@@ -19,7 +19,7 @@
 <body>
 	<!-- Obtener la lista de productos del atributo request -->
 	<%
-	List<Producto> productos =(List<Producto>) request.getAttribute("PRODUCTOS");
+	List<Producto> productos = (List<Producto>) request.getAttribute("PRODUCTO");
 	%>
 	<!-- Título de la página -->
 	<h1>Listado de Productos</h1>
@@ -30,21 +30,24 @@
 	<!-- Tabla para mostrar la lista de productos -->
 	<table class="table">
 		<thead>
-			<tr>
-				<th>Nombre</th>
-				<th>Descripción</th>
-				<th>Peso</th>
-				<th>Stock</th>
-			</tr>
+			<th>Nombre</th>
+			<th>Descripción</th>
+			<th>Peso</th>
+			<th>Stock</th>
 		</thead>
 		<tbody>
 			<!-- Iterar a través de la lista de productos usando JSTL -->
-			<c:forEach var="producto" items="${productos}">
+			<c:forEach var="producto" items="${PRODUCTO}">
 				<tr>
 					<td>${producto.nombre}</td>
 					<td>${producto.descripcion}</td>
 					<td>${producto.peso}</td>
 					<td>${producto.stock}</td>
+					<td><jsp:include page="elementos/botonModificar.jsp">
+							<jsp:param name="nombre" value="${producto.nombre}" />
+						</jsp:include> <jsp:include page="elementos/botonEliminar.jsp">
+							<jsp:param name="nombre" value="${producto.nombre}" />
+						</jsp:include></td>
 				</tr>
 			</c:forEach>
 		</tbody>

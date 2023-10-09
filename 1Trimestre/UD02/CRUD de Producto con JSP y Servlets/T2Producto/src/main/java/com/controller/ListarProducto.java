@@ -39,12 +39,11 @@ public class ListarProducto extends HttpServlet {
      * @throws IOException      Si ocurre una excepción de tipo IOException.
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        System.out.println("ListarProducto.doET");
+			throws ServletException, IOException {
 
         List<Producto> productos = producto.getAllProductos();
 
-        request.setAttribute("PRODUCTOS", productos);
+        request.setAttribute("PRODUCTO", productos);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("JSP/ListarProducto.jsp");
         dispatcher.forward(request, response);
@@ -70,7 +69,7 @@ public class ListarProducto extends HttpServlet {
             productos = productos.stream().filter(producto -> producto.getStock() == 0).collect(Collectors.toList());
         }
 
-        request.setAttribute("PRODUCTOS", productos);
+        request.setAttribute("PRODUCTO", productos);
         RequestDispatcher dispatcher = request.getRequestDispatcher("JSP/ListarProducto.jsp");
         dispatcher.forward(request, response);
     }

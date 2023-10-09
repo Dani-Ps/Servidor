@@ -18,9 +18,9 @@ import com.model.Producto;
 public class ProductoServicioImp implements ProductoServicio {
 
 	private static ProductoServicioImp instancia;
-    String url = "jdbc:mysql://localhost:3306/tarea2";
-    String user = "root";
-    String password = "root";
+	private final String url = "jdbc:mysql://localhost:3306/tarea2";
+	private final String user = "root";
+	private final String password = "root";
 
 	/**
 	 * Constructor privado de ProductoServicioImp. Inicializa la conexión a la base
@@ -146,9 +146,7 @@ public class ProductoServicioImp implements ProductoServicio {
 		// base de datos
 
 		List<Producto> productos = new ArrayList<>();
-
 		try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			
 
 			String sql = "SELECT * FROM Producto";
 
@@ -162,7 +160,7 @@ public class ProductoServicioImp implements ProductoServicio {
 					String descripcion = rs.getString("descripcion");
 					double peso = rs.getDouble("peso");
 					int stock = rs.getInt("stock");
-					System.out.println(nombre);
+
 					Producto p = new Producto(nombre, descripcion, peso, stock);
 					productos.add(p);
 				}
