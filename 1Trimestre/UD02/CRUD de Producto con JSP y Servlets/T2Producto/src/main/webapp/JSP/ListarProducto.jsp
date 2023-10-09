@@ -25,7 +25,7 @@
 	<h1>Listado de Productos</h1>
 	<!-- Enlace para agregar un nuevo producto -->
 	<ul>
-		<li><a href="AddProducto">Nuevo</a></li>
+		<li><a href="CrearProducto">Nuevo</a></li>
 	</ul>
 	<!-- Tabla para mostrar la lista de productos -->
 	<table class="table">

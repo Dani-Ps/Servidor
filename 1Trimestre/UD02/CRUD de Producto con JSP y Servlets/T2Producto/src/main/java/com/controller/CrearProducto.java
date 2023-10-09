@@ -6,6 +6,7 @@ import com.model.Producto;
 import com.service.ProductoServicio;
 import com.service.ProductoServicioImp;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -52,6 +53,8 @@ public class CrearProducto extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	System.out.println("CREAR:DOPOST");
+    	
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
         Double peso = Double.parseDouble(request.getParameter("peso"));
@@ -66,5 +69,7 @@ public class CrearProducto extends HttpServlet {
             // específica
             response.sendRedirect("JSP/error.jsp");
         }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("JSP/crearProducto.jsp");
+        dispatcher.forward(request, response);
     }
 }
