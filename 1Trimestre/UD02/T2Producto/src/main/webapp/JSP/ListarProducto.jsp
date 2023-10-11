@@ -25,7 +25,7 @@
 	<h1>Listado de Productos</h1>
 	<!-- Enlace para agregar un nuevo producto -->
 	<ul>
-		<li><a href="AddProducto">Nuevo</a></li>
+		<li><a href="CrearProducto">Nuevo</a></li>
 	</ul>
 	<!-- Tabla para mostrar la lista de productos -->
 	<table class="table">
@@ -54,7 +54,7 @@
 	</table>
 	<!-- Formulario para filtrar productos sin stock -->
 	<label for="filter">Sin Stock</label>
-	<form action="ListProducto" method="post">
+	<form action="ListarProducto" method="post">
 		<input type="checkbox" id="filter" name="filter" value="true">
 		<input type="submit" value="Filtrar">
 	</form>

@@ -16,10 +16,10 @@
 		<label for="descripcion">Descripción:</label> <input type="text"
 			name="descripcion" value="${producto.descripcion}" /><br>
 		<!-- Campo para el peso del producto -->
-		<label for="peso">Peso:</label> <input type="text" name="peso"
+		<label for="peso">Peso:</label> <input type="number" name="peso"
 			value="${producto.peso}" /><br>
 		<!-- Campo para el stock del producto -->
-		<label for="stock">Stock:</label> <input type="text" name="stock"
+		<label for="stock">Stock:</label> <input type="number" name="stock"
 			value="${producto.stock}" required /><br>
 		<!-- Botón para actualizar el producto -->
 		<input type="submit" value="Actualizar" />

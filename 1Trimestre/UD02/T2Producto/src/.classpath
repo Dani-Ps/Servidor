@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path="main/java"/>
 	<classpathentry kind="lib" path="main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-2.0.0.jar"/>
 	<classpathentry kind="lib" path="main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-2.0.0.jar"/>
 	<classpathentry kind="lib" path="main/webapp/WEB-INF/lib/mysql-connector-j-8.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Busta/Documents/apache-tomcat-10.1.12/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Busta/Documents/apache-tomcat-10.1.12/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

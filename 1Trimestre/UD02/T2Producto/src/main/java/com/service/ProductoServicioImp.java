@@ -18,7 +18,7 @@ import com.model.Producto;
 public class ProductoServicioImp implements ProductoServicio {
 
 	private static ProductoServicioImp instancia;
-	private final String url = "jdbc:mysql://localhost:3306/tarea2";
+	private final String url = "jdbc:mysql://localhost:3306/Tarea2";
 	private final String user = "root";
 	private final String password = "root";
 
@@ -53,7 +53,7 @@ public class ProductoServicioImp implements ProductoServicio {
 
 		try (Connection connection = DriverManager.getConnection(url, user, password)) {
 
-			String sql = "INSERT INTO Producto (nombre, descripcion, peso, stock) VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO Productos (nombre, descripcion, peso, stock) VALUES (?, ?, ?, ?)";
 
 			try (PreparedStatement statement = connection.prepareStatement(sql)) {
 				statement.setString(1, producto.getNombre());
@@ -77,13 +77,13 @@ public class ProductoServicioImp implements ProductoServicio {
 		// nombre
 
 		try (Connection connection = DriverManager.getConnection(url, user, password)) {
-			String sql = "SELECT * FROM Producto WHERE nombre = ?";
+			String sql = "SELECT * FROM Productos WHERE nombre = ?";
 			try (PreparedStatement statement = connection.prepareStatement(sql)) {
 				statement.setString(1, nombre);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					if (resultSet.next()) {
 
-						String descripcion = resultSet.getString("apellido");
+						String descripcion = resultSet.getString("descripcion");
 						Double peso = resultSet.getDouble("peso");
 						int stock = resultSet.getInt("stock");
 						return new Producto(nombre, descripcion, peso, stock);
@@ -103,8 +103,9 @@ public class ProductoServicioImp implements ProductoServicio {
 		// Implementación del método para actualizar un producto en la base de datos
 
 		try (Connection connection = DriverManager.getConnection(url, user, password)) {
+			System.out.println("update producto conexion establecida");
 
-			String sql = "UPDATE Producto SET nombre = ?, descripcion = ?, peso = ?, stock = ? WHERE nombre = ?";
+			String sql = "UPDATE Productos SET nombre = ?, descripcion = ?, peso = ?, stock = ? WHERE nombre = ?";
 
 			try (PreparedStatement statement = connection.prepareStatement(sql)) {
 				statement.setString(1, producto.getNombre());
@@ -127,7 +128,7 @@ public class ProductoServicioImp implements ProductoServicio {
 
 		try (Connection connection = DriverManager.getConnection(url, user, password)) {
 
-			String sql = "DELETE FROM Producto WHERE nombre = ?";
+			String sql = "DELETE FROM Productos WHERE nombre = ?";
 			try (PreparedStatement statement = connection.prepareStatement(sql)) {
 				statement.setString(1, nombre);
 				int rowsDeleted = statement.executeUpdate();

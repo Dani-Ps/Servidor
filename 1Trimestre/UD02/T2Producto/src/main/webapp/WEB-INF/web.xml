@@ -31,13 +31,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>EliminarProducto</display-name>
-    <servlet-name>EliminarProducto</servlet-name>
-    <servlet-class>com.controller.EliminarProducto</servlet-class>
+    <display-name>EliminarProduct</display-name>
+    <servlet-name>EliminarProduct</servlet-name>
+    <servlet-class>com.controller.EliminarProduct</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>EliminarProducto</servlet-name>
-    <url-pattern>/EliminarProducto</url-pattern>
+    <servlet-name>EliminarProduct</servlet-name>
+    <url-pattern>/EliminarProduct</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

@@ -28,10 +28,10 @@
 		<label for="descripcion">Descripción:</label> <input type="text"
 			id="descripcion" name="descripcion"><br>
 		<!-- Campo para el peso del producto -->
-		<label for="peso">Peso:</label> <input type="text" id="peso"
+		<label for="peso">Peso:</label> <input type="number" id="peso"
 			name="peso"><br>
 		<!-- Campo para el stock del producto -->
-		<label for="stock">Stock:</label> <input type="text" id="stock"
+		<label for="stock">Stock:</label> <input type="number" id="stock"
 			name="stock" required><br>
 		<!-- Botón para guardar el producto -->
 		<input type="submit" value="Guardar">

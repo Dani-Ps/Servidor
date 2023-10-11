@@ -53,7 +53,7 @@ public class EliminarProduct extends HttpServlet {
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			response.sendRedirect("JSP/error.jsp");
+			response.sendRedirect("JSP/error/error.jsp");
 		}
 	}
 
