@@ -6,6 +6,7 @@ import com.model.Producto;
 import com.service.ProductoServicio;
 import com.service.ProductoServicioImp;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,16 +46,20 @@ public class EditarProducto extends HttpServlet {
 			Producto p = productoServicio.readProducto(nombre);
 
 			if (p == null) {
-				response.sendRedirect("error.jsp");
+				response.sendRedirect("JSP/error/error.jsp");
 				return;
 			}
-
+			request.setAttribute("descripcion", p.getDescripcion());
+			request.setAttribute("peso", p.getPeso());
+			request.setAttribute("stock", p.getStock());
 			request.setAttribute("producto", p);
-			request.getRequestDispatcher("editarProducto.jsp").forward(request, response);
+
+			RequestDispatcher dispacher = request.getRequestDispatcher("JSP/editarProducto.jsp");
+			dispacher.forward(request, response);
 
 		} catch (Exception e) {
-			// Manejar excepciones adecuadamente, por ejemplo, enviar a una página de error
-			// específica
+			e.printStackTrace();
+
 		}
 
 	}
@@ -74,23 +79,39 @@ public class EditarProducto extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String nombre = request.getParameter("nombre");
-			System.out.println("editar doPost " + nombre);
 			String descripcion = request.getParameter("descripcion");
-			double peso = Double.parseDouble(request.getParameter("peso"));
-			int stock = Integer.parseInt(request.getParameter("stock"));
+			String pesoParam = request.getParameter("peso");
+			String stockParam = request.getParameter("stock");
 
-			Producto p = new Producto(nombre, descripcion, peso, stock);
-			System.out.println("editar doPost creado el nuevo producto");
+			// Comprueba si "peso" y "stock" no son nulos
+			if (pesoParam != null && stockParam != null) {
+				double peso = Double.parseDouble(pesoParam);
+				int stock = Integer.parseInt(stockParam);
 
-			boolean exito = productoServicio.updateProducto(p);
+				Producto p = new Producto(nombre, descripcion, peso, stock);
 
-			if (!exito) {
-				response.sendRedirect("JSP/error/error.jsp");
+				boolean exito = productoServicio.updateProducto(p);
+
+				if (!exito) {
+					request.setAttribute("mensaje", "Error al actualizar el producto.");
+				} else {
+					request.setAttribute("mensaje", "Producto actualizado con éxito.");
+				}
+
+				// Redirige a una página de confirmación (exito o error)
+				RequestDispatcher dispatcher = request.getRequestDispatcher("JSP/exito.jsp");
+				dispatcher.forward(request, response);
 			} else {
-				response.sendRedirect("JSP/exito.jsp");
+				// Manejar el caso en el que "peso" o "stock" son null, por ejemplo, mostrando
+				// un mensaje de error.
+				request.setAttribute("mensaje", "Error en los datos del formulario.");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("JSP/exito.jsp");
+				dispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			response.sendRedirect("JSP/error/error.jsp");
 		}
 	}
+
 }

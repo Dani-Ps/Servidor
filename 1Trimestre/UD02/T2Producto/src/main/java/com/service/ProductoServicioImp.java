@@ -108,13 +108,15 @@ public class ProductoServicioImp implements ProductoServicio {
 			String sql = "UPDATE Productos SET nombre = ?, descripcion = ?, peso = ?, stock = ? WHERE nombre = ?";
 
 			try (PreparedStatement statement = connection.prepareStatement(sql)) {
-				statement.setString(1, producto.getNombre());
-				statement.setString(2, producto.getDescripcion());
-				statement.setDouble(3, producto.getPeso());
-				statement.setInt(4, producto.getStock());
-				int rowsUpdated = statement.executeUpdate();
-				return rowsUpdated > 0;
+			    statement.setString(2, producto.getDescripcion());
+			    statement.setDouble(3, producto.getPeso());
+			    statement.setInt(4, producto.getStock());
+			    statement.setString(1, producto.getNombre()); 
+			    statement.setString(5, producto.getNombre());
+			    int rowsUpdated = statement.executeUpdate();
+			    return rowsUpdated > 0;
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

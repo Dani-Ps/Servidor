@@ -1,4 +1,4 @@
-<form action="EditarProducto" method="post" style="display:inline;">
+<form action="EditarProducto" method="get" style="display:inline;">
     <input type="hidden" name="nombre" value="${param.nombre}" />
     <input type="submit" value="Modificar" />
 </form>
