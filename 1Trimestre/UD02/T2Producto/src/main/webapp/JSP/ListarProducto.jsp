@@ -17,46 +17,49 @@
 <title>Listado de Productos</title>
 </head>
 <body>
-	<!-- Obtener la lista de productos del atributo request -->
-	<%
-	List<Producto> productos = (List<Producto>) request.getAttribute("PRODUCTOS");
-	%>
-	<!-- Título de la página -->
-	<h1>Listado de Productos</h1>
-	<!-- Enlace para agregar un nuevo producto -->
-	<ul>
-		<li><a href="CrearProducto">Nuevo</a></li>
-	</ul>
-	<!-- Tabla para mostrar la lista de productos -->
-	<table class="table">
-		<thead>
-			<th>Nombre</th>
-			<th>Descripción</th>
-			<th>Peso</th>
-			<th>Stock</th>
-		</thead>
-		<tbody>
-			<!-- Iterar a través de la lista de productos usando JSTL -->
-			<c:forEach var="producto" items="${PRODUCTOS}">
+	<!-- Contenedor principal con margen -->
+	<div class="container mt-4">
+		<!-- Título de la página -->
+		<h1 class="mb-4">Listado de Productos</h1>
+		<!-- Enlace para agregar un nuevo producto -->
+		<a class="btn btn-primary mb-3" href="CrearProducto">Nuevo</a>
+		<!-- Tabla para mostrar la lista de productos -->
+		<table class="table">
+			<thead>
 				<tr>
-					<td>${producto.nombre}</td>
-					<td>${producto.descripcion}</td>
-					<td>${producto.peso}</td>
-					<td>${producto.stock}</td>
-					<td><jsp:include page="elementos/botonModificar.jsp">
-							<jsp:param name="nombre" value="${producto.nombre}" />
-						</jsp:include> <jsp:include page="elementos/botonEliminar.jsp">
-							<jsp:param name="nombre" value="${producto.nombre}" />
-						</jsp:include></td>
+					<th>Nombre</th>
+					<th>Descripción</th>
+					<th>Peso</th>
+					<th>Stock</th>
+					<th>Acciones</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<!-- Formulario para filtrar productos sin stock -->
-	<label for="filter">Sin Stock</label>
-	<form action="ListarProducto" method="post">
-		<input type="checkbox" id="filter" name="filter" value="true">
-		<input type="submit" value="Filtrar">
-	</form>
+			</thead>
+			<tbody>
+				<!-- Iterar a través de la lista de productos usando JSTL -->
+				<c:forEach var="producto" items="${PRODUCTOS}">
+					<tr>
+						<td>${producto.nombre}</td>
+						<td>${producto.descripcion}</td>
+						<td>${producto.peso}</td>
+						<td>${producto.stock}</td>
+						<td><jsp:include page="elementos/botonModificar.jsp">
+								<jsp:param name="nombre" value="${producto.nombre}" />
+							</jsp:include> <jsp:include page="elementos/botonEliminar.jsp">
+								<jsp:param name="nombre" value="${producto.nombre}" />
+							</jsp:include></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<!-- Formulario para filtrar productos sin stock -->
+		<form action="ListarProducto" method="post">
+			<div class="form-check mb-3">
+				<input type="checkbox" class="form-check-input" id="filter"
+					name="filter" value="true"> <label class="form-check-label"
+					for="filter">Sin Stock</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Filtrar</button>
+		</form>
+	</div>
 </body>
 </html>
