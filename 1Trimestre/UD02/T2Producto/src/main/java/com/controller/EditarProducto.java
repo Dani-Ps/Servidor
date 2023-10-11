@@ -68,6 +68,7 @@ public class EditarProducto extends HttpServlet {
 	 *                 cliente.
 	 * @throws ServletException Si ocurre una excepción de tipo ServletException.
 	 * @throws IOException      Si ocurre una excepción de tipo IOException.
+	 * 
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
