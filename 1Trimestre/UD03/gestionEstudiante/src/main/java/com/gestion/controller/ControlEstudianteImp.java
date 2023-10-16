@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gestion.model.Alumno;
 import com.gestion.model.Alumno.Curso;
@@ -14,10 +16,13 @@ import com.gestion.model.Alumno.Curso;
 public class ControlEstudianteImp implements ControlEstudianteI {
 
 	private List<Alumno> alumnos = new ArrayList<Alumno>();
-
+	
+	@GetMapping("/listar")
 	@Override
-	public boolean listar() {
-		return false;
+	public String listar(Model model) {
+		List<Alumno> listaAlum = getAll();
+		model.addAttribute("alumnos", listaAlum);
+		return "listar";
 	}
 
 	@Override
@@ -27,7 +32,7 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 
 	@Override
 	public List<Alumno> getAll() {
-		return null;
+		return alumnos;
 	}
 
 	@Override
@@ -44,7 +49,7 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 
 	@PostMapping("/crear")
 	@Override
-	public String añadir(String nombre, Integer edad, Curso curso) {
+	public String añadir(@RequestParam String nombre, @RequestParam Integer edad, @RequestParam Curso curso) {
 		try {
 			Alumno a = new Alumno(nombre, edad, curso);
 			if (existe(a)) {
