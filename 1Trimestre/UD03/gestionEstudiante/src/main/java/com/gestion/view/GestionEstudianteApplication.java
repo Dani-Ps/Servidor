@@ -1,4 +1,4 @@
-package com.gestion;
+package com.gestion.view;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
