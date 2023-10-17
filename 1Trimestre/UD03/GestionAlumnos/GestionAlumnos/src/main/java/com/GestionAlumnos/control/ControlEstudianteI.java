@@ -11,12 +11,9 @@ public interface ControlEstudianteI {
 	
 	public String listar(Model model);
 	public String añadir(String nombre, Integer edad, String curso );
-	public boolean leer(Alumno a);
-	public List<Alumno> getAll();
-	public boolean eliminar(String nombre);
-	public List<Alumno> filtrar();
-	boolean existe(Alumno a);
-	
+	public String eliminar(String nombre);
+	String editar(String nombre, Model model);
+
 	
 	
 

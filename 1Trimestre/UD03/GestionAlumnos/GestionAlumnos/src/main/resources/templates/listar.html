@@ -31,8 +31,10 @@
 					<td th:text="${alumno.edad}"></td>
 					<td th:text="${alumno.curso}"></td>
 					<td>
-						<a th:href="@{/modificar/{id}(id=${alumno.nombre})}" class="btn btn-warning">Modificar</a>
-						<a th:href="@{/eliminar/{id}(id=${alumno.nombre})}" class="btn btn-danger">Eliminar</a>
+						<a th:href="@{/modificar/{nombre}(nombre=${alumno.nombre})}"
+							class="btn btn-warning">Modificar</a>
+
+						<a th:href="@{/eliminar/{nombre}(nombre=${alumno.nombre})}" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>
