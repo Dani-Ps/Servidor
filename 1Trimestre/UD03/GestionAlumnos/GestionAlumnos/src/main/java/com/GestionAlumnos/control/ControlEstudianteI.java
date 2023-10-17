@@ -10,7 +10,7 @@ import com.GestionAlumnos.model.Alumno.Curso;
 public interface ControlEstudianteI {
 	
 	public String listar(Model model);
-	public String añadir(String nombre, Integer edad, Curso curso );
+	public String añadir(String nombre, Integer edad, String curso );
 	public boolean leer(Alumno a);
 	public List<Alumno> getAll();
 	public boolean eliminar(String nombre);

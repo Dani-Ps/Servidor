@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.GestionAlumnos.model.Alumno;
-import com.GestionAlumnos.model.Alumno.Curso;
 
 @Controller
 public class ControlEstudianteImp implements ControlEstudianteI {
@@ -18,7 +17,7 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	private List<Alumno> alumnos = new ArrayList<Alumno>();
 
 	@PostMapping("/crear")
-	public String añadir(@RequestParam String nombre, @RequestParam Integer edad, @RequestParam Curso curso) {
+	public String añadir(@RequestParam String nombre, @RequestParam Integer edad, @RequestParam String curso) {
 		try {
 			Alumno a = new Alumno(nombre, edad, curso);
 			if (existe(a)) {

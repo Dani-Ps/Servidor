@@ -6,13 +6,13 @@ public class Alumno {
 
 	private String nombre;
 	private Integer edad;
-	private Curso curso;
+	private String curso;
 
 	public Alumno() {
 		super();
 	}
 
-	public Alumno(String nombre, Integer edad, Curso curso) {
+	public Alumno(String nombre, Integer edad, String curso) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
@@ -39,11 +39,11 @@ public class Alumno {
 		this.edad = edad;
 	}
 
-	public Curso getCurso() {
+	public String getCurso() {
 		return curso;
 	}
 
-	public void setCurso(Curso curso) {
+	public void setCurso(String curso) {
 		this.curso = curso;
 	}
 
