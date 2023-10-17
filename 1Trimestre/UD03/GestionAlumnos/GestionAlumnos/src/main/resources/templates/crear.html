@@ -26,7 +26,10 @@
 			</div>
 			<div class="form-group">
 				<label for="curso">Curso:</label>
-				<input type="text" class="form-control" id="curso" th:field="*{curso}" required="required">
+				<select class="form-control" id="curso" th:field="*{curso}" required="required">
+					<option value="Primero">Primero</option>
+					<option value="Segundo">Segundo</option>
+				</select>
 			</div>
 			<button type="submit" class="btn btn-primary">Enviar</button>
 		</form>

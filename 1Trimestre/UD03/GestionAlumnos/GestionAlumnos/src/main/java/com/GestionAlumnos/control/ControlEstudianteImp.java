@@ -114,7 +114,6 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	    try {
 	        // Buscar al alumno en la lista por el nombre
 	        for (Alumno a : alumnos) {
-	        	System.out.println("Metodo post modificar");
 	            if (a.getNombre().equalsIgnoreCase(alumno.getNombre())) {
 	                // Actualizar los campos de edad y curso
 	                a.setEdad(alumno.getEdad());
