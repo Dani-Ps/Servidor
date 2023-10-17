@@ -6,21 +6,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Éxito</title>
 
-	<!-- Enlace al archivo CSS de Bootstrap -->
+	<!-- Enlace al archivo CSS de Bootstrap para aplicar estilos -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
 <body>
 	<div class="container mt-5">
+		<!-- Mensaje de éxito o notificación de error -->
 		<div class="alert alert-success" role="alert">
 			Ha habido un error general, vuelve a intentarlo.
 		</div>
-
+		<!-- Botón para volver a la lista de estudiantes, con enlace Thymeleaf si se utiliza un framework como Spring Boot -->
 		<a th:href="@{/index}" class="btn btn-primary">Volver a la lista de estudiantes.</a>
 	</div>
 
-	<!-- Scripts de Bootstrap (JavaScript) -->
+	<!-- Scripts de Bootstrap (JavaScript) para funcionalidad interactiva -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
 		integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
 		crossorigin="anonymous"></script>
