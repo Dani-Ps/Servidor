@@ -1,4 +1,4 @@
-package com.gestion.controller;
+package com.GestionAlumnos.control;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.gestion.model.Alumno;
-import com.gestion.model.Alumno.Curso;
+import com.GestionAlumnos.model.Alumno;
+import com.GestionAlumnos.model.Alumno.Curso;
 
 @Controller
 public class ControlEstudianteImp implements ControlEstudianteI {
