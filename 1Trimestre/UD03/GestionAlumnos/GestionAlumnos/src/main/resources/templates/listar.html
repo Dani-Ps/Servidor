@@ -16,7 +16,7 @@
 		<h1>Lista de Estudiantes</h1>
 		<br>
 
-		<table class="table">
+		<table class="table" style="color: whitesmoke">
 			<thead>
 				<tr>
 					<th>Nombre</th>
@@ -31,14 +31,14 @@
 					<td th:text="${alumno.edad}"></td>
 					<td th:text="${alumno.curso}"></td>
 					<td>
-						<a th:href="@{/modificar/{id}(id=${alumno.id})}" class="btn btn-warning">Modificar</a>
-						<a th:href="@{/eliminar/{id}(id=${alumno.id})}" class="btn btn-danger">Eliminar</a>
+						<a th:href="@{/modificar/{id}(id=${alumno.nombre})}" class="btn btn-warning">Modificar</a>
+						<a th:href="@{/eliminar/{id}(id=${alumno.nombre})}" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<a th:href="/crear" class="btn btn-success">Crear Estudiante</a>
+		<a th:href="@{/crear}" class="btn btn-success">Crear Estudiante</a>
 	</div>
 
 	<!-- Scripts de Bootstrap (JavaScript) -->

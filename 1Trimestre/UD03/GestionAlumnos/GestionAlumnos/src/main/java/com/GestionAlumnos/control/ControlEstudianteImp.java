@@ -55,7 +55,7 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	public List<Alumno> getAll() {
 		return alumnos;
 	}
-
+	@GetMapping("/eliminar")
 	@Override
 	public boolean eliminar(String nombre) {
 		// TODO Auto-generated method stub
@@ -79,4 +79,8 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 		return "error/exist";
 	}
 
+	@GetMapping("/index")
+	public String volverInicio() {
+		return "/index";
+	}
 }
