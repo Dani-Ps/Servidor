@@ -34,9 +34,6 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	@PostMapping("/crear")
 	public String añadir(@RequestParam String nombre, @RequestParam Integer edad, @RequestParam String curso) {
 		try {
-			if (edad < 0) {
-				return edadError();
-			}
 			Alumno a = new Alumno(nombre, edad, curso);
 			if (existe(a)) {
 				return errorExiste();
@@ -166,10 +163,6 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 			for (Alumno a : alumnos) {
 				if (a.getNombre().equalsIgnoreCase(alumno.getNombre())) {
 
-					if (alumno.getEdad() < 0) {
-						return edadError();
-
-					}
 					a.setEdad(alumno.getEdad());
 					a.setCurso(alumno.getCurso());
 					break;
@@ -229,8 +222,5 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	public String editarExito() {
 		return "editarExito";
 	}
-	@GetMapping("/edadError")
-	public String edadError() {
-		return "error/edadError";
-	}
+
 }

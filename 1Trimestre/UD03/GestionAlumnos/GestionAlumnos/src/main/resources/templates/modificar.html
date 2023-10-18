@@ -22,8 +22,12 @@
 			<input type="hidden" th:field="*{nombre}">
 			<!-- Campo para la edad del alumno -->
 			<div class="form-group">
+				<!-- Campo para la edad del estudiante con validación -->
 				<label for="edad">Edad:</label>
-				<input type="number" class="form-control" id="edad" th:field="*{edad}" required="required">
+				<input type="number" class="form-control" id="edad" th:field="*{edad}" required="required"
+					placeholder="Ingrese la edad" min="18" max="99">
+				<div th:if="${#fields.hasErrors('edad')}" class="text-danger">Ingresa una edad válida (entre 18 y 99).
+				</div>
 			</div>
 			<!-- Campo para el curso del alumno (selección) -->
 			<div class="form-group">

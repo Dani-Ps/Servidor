@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,19 +20,25 @@
 		<!-- Formulario para crear un estudiante -->
 		<form th:object="${alumno}" th:action="@{/crear}" method="post">
 			<div class="form-group">
-				<!-- Campo para el nombre del estudiante -->
+				<!-- Campo para el nombre del estudiante con validación -->
 				<label for="nombre">Nombre:</label>
-				<input type="text" class="form-control" id="nombre" th:field="*{nombre}" required="required" placeholder="Ingrese el nombre">
+				<input type="text" class="form-control" id="nombre" th:field="*{nombre}" required="required"
+					placeholder="Ingrese el nombre" pattern="^[A-Za-z ]+$">
+				<div th:if="${#fields.hasErrors('nombre')}" class="text-danger">Ingresa un nombre válido.</div>
 			</div>
 			<div class="form-group">
-				<!-- Campo para la edad del estudiante -->
+				<!-- Campo para la edad del estudiante con validación -->
 				<label for="edad">Edad:</label>
-				<input type="number" class="form-control" id="edad" th:field="*{edad}" required="required" placeholder="Ingrese la edad">
+				<input type="number" class="form-control" id="edad" th:field="*{edad}" required="required"
+					placeholder="Ingrese la edad" min="18" max="99">
+				<div th:if="${#fields.hasErrors('edad')}" class="text-danger">Ingresa una edad válida (entre 18 y 99).
+				</div>
 			</div>
 			<div class="form-group">
-				<!-- Campo para seleccionar el curso del estudiante -->
+				<!-- Campo para seleccionar el curso del estudiante con validación -->
 				<label for="curso">Curso:</label>
 				<select class="form-control" id="curso" th:field="*{curso}" required="required">
+					<option value="">Selecciona un curso</option>
 					<option value="Primero">Primero</option>
 					<option value="Segundo">Segundo</option>
 				</select>
@@ -49,4 +56,5 @@
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 		crossorigin="anonymous"></script>
 </body>
+
 </html>
