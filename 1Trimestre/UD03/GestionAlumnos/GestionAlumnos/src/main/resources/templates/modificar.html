@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+	<!-- Metadatos y enlaces a estilos -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Crear estudiante</title>
@@ -11,34 +12,43 @@
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
-<body style="background-color: rgb(12, 2, 19); color: whitesmoke; margin-top: 100px; text-align: center;">
+<body style="background-color: rgb(0, 0, 0); color: whitesmoke; margin-top: 100px;">
 	<div class="container">
-		<!-- Título principal de la página -->
 		<h1 class="mb-3">2º DAW</h1>
-		<!-- Descripción de la tarea a realizar -->
 		<p class="mb-4">Actualiza los datos del alumno:</p>
 		<form th:object="${alumno}" th:action="@{/modificar/{nombre}(nombre=${alumno.nombre})}" method="post">
-			<!-- Campo oculto para el nombre del alumno -->
-			<input type="hidden" th:field="*{nombre}">
-			<!-- Campo para la edad del alumno -->
-			<div class="form-group">
-				<!-- Campo para la edad del estudiante con validación -->
+			<!-- Campo para el nombre del estudiante -->
+			<div class="form-group mb-4">
+				<label for="nombre">Nombre:</label>
+				<input type="text" class="form-control" id="nombre" th:field="*{nombre}" required="required"
+					placeholder="Ingrese el nombre"  pattern="^[A-Za-z ]+$">
+				<div th:if="${#fields.hasErrors('nombre')}" class="text-danger">Ingresa un nombre válido.</div>
+			</div>
+
+			<!-- Campo para la edad del estudiante con validación -->
+			<div class="form-group mb-4">
 				<label for="edad">Edad:</label>
 				<input type="number" class="form-control" id="edad" th:field="*{edad}" required="required"
 					placeholder="Ingrese la edad" min="18" max="99">
 				<div th:if="${#fields.hasErrors('edad')}" class="text-danger">Ingresa una edad válida (entre 18 y 99).
 				</div>
 			</div>
-			<!-- Campo para el curso del alumno (selección) -->
-			<div class="form-group">
+
+			<!-- Campo para el curso del alumno (selección) con validación -->
+			<div class="form-group mb-4">
 				<label for="curso">Curso:</label>
 				<select class="form-control" id="curso" th:field="*{curso}" required="required">
+					<option value="">Selecciona un curso</option>
 					<option value="Primero">Primero</option>
 					<option value="Segundo">Segundo</option>
 				</select>
+				<div th:if="${#fields.hasErrors('curso')}" class="text-danger">Selecciona un curso válido.</div>
 			</div>
-			<!-- Botón para guardar los cambios -->
-			<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+
+			<div class="mb-4">
+				<!-- Botón para guardar los cambios -->
+				<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+			</div>
 		</form>
 	</div>
 

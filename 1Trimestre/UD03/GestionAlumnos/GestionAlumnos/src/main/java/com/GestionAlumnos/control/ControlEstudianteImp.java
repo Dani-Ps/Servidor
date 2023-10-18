@@ -34,16 +34,19 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	@PostMapping("/crear")
 	public String añadir(@RequestParam String nombre, @RequestParam Integer edad, @RequestParam String curso) {
 		try {
+			// Crear un objeto Alumno con los parámetros recibidos
 			Alumno a = new Alumno(nombre, edad, curso);
 			if (existe(a)) {
+				// El estudiante ya existe, mostrar un error.
 				return errorExiste();
 			} else {
+				// Agregar el estudiante a la lista.
 				alumnos.add(a);
-				return "exito";
+				return "exito"; // Éxito al agregar el estudiante.
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return errorGeneral();
+			return errorGeneral(); // Error general.
 		}
 	}
 
@@ -56,7 +59,7 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	@GetMapping("/crear")
 	public String mostrarPaginaCrear(Model model) {
 		model.addAttribute("alumno", new Alumno());
-		return "crear";
+		return "crear"; // Redirigir a la vista "crear".
 	}
 
 	/**
@@ -70,7 +73,7 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	public String listar(Model model) {
 		List<Alumno> listaAlum = getAll();
 		model.addAttribute("alumnos", listaAlum);
-		return "listar";
+		return "listar"; // Redirigir a la vista "listar".
 	}
 
 	@GetMapping("/buscar")
@@ -80,11 +83,11 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 		// Verificar si la lista de alumnos está vacía
 		if (listaAlum.isEmpty()) {
 			// Redirigir a un template de error
-			return noExiste();
+			return noExiste(); // No existe ningún estudiante con el nombre proporcionado.
 		}
 
 		model.addAttribute("alumnos", listaAlum);
-		return "listar"; // Redirigir al template de lista
+		return "listar"; // Redirigir al template de lista.
 	}
 
 	/**
@@ -106,6 +109,12 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 		return alumnos;
 	}
 
+	/**
+	 * Método para obtener una lista de estudiantes por nombre.
+	 *
+	 * @param nombre Nombre para filtrar la lista de estudiantes.
+	 * @return Lista de estudiantes que coinciden con el nombre proporcionado.
+	 */
 	public List<Alumno> getAllPorNombre(String nombre) {
 		return alumnos.stream().filter(alumno -> alumno.getNombre().startsWith(nombre)).collect(Collectors.toList());
 	}
@@ -114,28 +123,32 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	 * Método para eliminar un estudiante por nombre.
 	 *
 	 * @param nombre Nombre del estudiante a eliminar.
-	 * @return Vista "eliminar" o vistas de error.
+	 * @return Vista "eliminar" si se elimina con éxito, vistas de error en caso
+	 *         contrario.
 	 */
 	@GetMapping("/eliminar/{nombre}")
 	public String eliminar(@PathVariable String nombre) {
 		try {
+			// Creo el objeto alumno que será el eliminado.
 			Alumno alumEliminar = null;
+			// Busco por el nombre en la lista al alumno.
 			for (Alumno alumno : alumnos) {
 				if (alumno.getNombre().equalsIgnoreCase(nombre)) {
 					alumEliminar = alumno;
 					break;
 				}
 			}
-
 			if (alumEliminar != null) {
+				// Eliminar el estudiante de la lista y redirigir a la vista "eliminar".
 				alumnos.remove(alumEliminar);
 				return "eliminar";
 			} else {
+				// Redirigir a una vista de error en caso de que el estudiante no se encuentre.
 				return "error/errorEliminar";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error/generalError";
+			return "error/generalError"; // Error general.
 		}
 	}
 
@@ -153,23 +166,24 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 				}
 			}
 			if (alumEditar != null) {
+				// Mostrar la vista de edición y pasar el estudiante como atributo.
 				model.addAttribute("alumno", alumEditar);
-				return "modificar";
-			} else {
-				return "error/editaError";
+
 			}
+			return "modificar";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error/generalError";
+			return "error/generalError"; // Error general.
 		}
 	}
 
 	@PostMapping("/modificar/{nombre}")
-	public String actualizarAlumno(@ModelAttribute Alumno alumno) {
+	public String actualizarAlumno(@ModelAttribute Alumno alumno, @PathVariable String nombre) {
 		try {
 			for (Alumno a : alumnos) {
-				if (a.getNombre().equalsIgnoreCase(alumno.getNombre())) {
-
+				if (a.getNombre().equalsIgnoreCase(nombre)) {
+					// Actualizar los datos del estudiante con los nuevos valores.
+					a.setNombre(alumno.getNombre()); // Actualizar el nombre
 					a.setEdad(alumno.getEdad());
 					a.setCurso(alumno.getCurso());
 					break;
@@ -178,15 +192,16 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 		} catch (Exception e) {
 			return errorGeneral();
 		}
-		return editarExito();
+		return editarExito(); // Redirigir a la vista de edición exitosa.
 	}
 
 	@GetMapping("/filtrarPorCurso")
 	public String filtrarPorCurso(@RequestParam("curso") String curso, Model model) {
+		// Filtrar estudiantes por curso y pasarlos al modelo.
 		List<Alumno> estudiantesFiltrados = alumnos.stream().filter(alumno -> alumno.getCurso().equalsIgnoreCase(curso))
 				.collect(Collectors.toList());
 		model.addAttribute("alumnos", estudiantesFiltrados);
-		return "listar";
+		return "listar"; // Redirigir a la vista de lista.
 	}
 
 	@GetMapping("/promedioEdad")
@@ -198,42 +213,43 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 			String promedioFormateado = String.format("%.1f", promedio); // Formatea el promedio con un decimal
 			model.addAttribute("promedioEdad", promedio);
 		}
-		return "promedioEdad";
+		return "promedioEdad"; // Redirigir a la vista "promedioEdad".
 	}
 
+	// Metodos para redirigir
 	@GetMapping("/index")
 	public String volverInicio() {
-		return "/index";
+		return "/index"; // Redirigir a la vista "index".
 	}
 
 	@GetMapping("/exist")
 	public String errorExiste() {
-		return "error/exist";
+		return "error/exist"; // Redirigir a la vista de error "exist".
 	}
 
 	@GetMapping("/generalError")
 	public String errorGeneral() {
-		return "error/generalError";
+		return "error/generalError"; // Redirigir a la vista de error "generalError".
 	}
 
 	@GetMapping("/errorEliminar")
 	public String errorEliminar() {
-		return "error/errorEliminar";
+		return "error/errorEliminar"; // Redirigir a la vista de error "errorEliminar".
 	}
 
 	@GetMapping("/errorEditar")
 	public String errorEditar() {
-		return "error/errorEditar";
+		return "error/errorEditar"; // Redirigir a la vista de error "errorEditar".
 	}
 
 	@GetMapping("/editarExito")
 	public String editarExito() {
-		return "editarExito";
+		return "editarExito"; // Redirigir a la vista de éxito "editarExito".
 	}
 
 	@GetMapping("/noExiste")
 	public String noExiste() {
-		return "error/noExiste";
+		return "error/noExiste"; // Redirigir a la vista de error "noExiste".
 	}
 
 }

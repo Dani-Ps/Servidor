@@ -20,7 +20,7 @@
 		<div th:if="${promedioEdad > 0}">
 			<!-- Mostrar el promedio de edad si es mayor que 0 -->
 			<p>El promedio de edad de los estudiantes registrados es: <span
-					th:text="${#numbers.formatDecimal(promedioEdad, 1)}"></span> años.</p>
+					th:text="${promedioEdad}"></span> años.</p>
 		</div>
 		<div th:unless="${promedioEdad > 0}">
 			<!-- Mensaje en caso de que no haya estudiantes registrados -->
