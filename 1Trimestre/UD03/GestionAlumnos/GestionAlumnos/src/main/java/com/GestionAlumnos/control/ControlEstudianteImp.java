@@ -76,8 +76,15 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	@GetMapping("/buscar")
 	public String listarPorNombre(@RequestParam("nombre") String nombre, Model model) {
 		List<Alumno> listaAlum = getAllPorNombre(nombre);
+
+		// Verificar si la lista de alumnos está vacía
+		if (listaAlum.isEmpty()) {
+			// Redirigir a un template de error
+			return noExiste();
+		}
+
 		model.addAttribute("alumnos", listaAlum);
-		return "listar";
+		return "listar"; // Redirigir al template de lista
 	}
 
 	/**
@@ -185,9 +192,10 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	@GetMapping("/promedioEdad")
 	public String mostrarPromedioEdad(Model model) {
 		if (alumnos.isEmpty()) {
-			model.addAttribute("promedioEdad", 0);
+			model.addAttribute("promedioEdad", 0.0); // Cuando no hay alumnos, se muestra 0.0 como un número
 		} else {
 			double promedio = alumnos.stream().mapToDouble(Alumno::getEdad).average().orElse(0);
+			String promedioFormateado = String.format("%.1f", promedio); // Formatea el promedio con un decimal
 			model.addAttribute("promedioEdad", promedio);
 		}
 		return "promedioEdad";
@@ -221,6 +229,11 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	@GetMapping("/editarExito")
 	public String editarExito() {
 		return "editarExito";
+	}
+
+	@GetMapping("/noExiste")
+	public String noExiste() {
+		return "error/noExiste";
 	}
 
 }
