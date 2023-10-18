@@ -49,28 +49,29 @@
 				<input type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre"
 					pattern="^[A-Za-z ]+$">
 			</div>
-			<form th:action="@{/filtrarPorCurso}" method="get" class="form form-inline mt-4" style="margin: 20px 0;">
+		</form>
+		<form th:action="@{/filtrarPorCurso}" method="get" class="form form-inline mt-4" style="margin: 20px 0;">
 
-				<div class="form-group">
+			<div class="form-group">
 
-					<label for="cursoFiltro" class="mr-2 mb-4" style="margin: 20px 0;">Filtrar por Curso:</label>
+				<label for="cursoFiltro" class="mr-2 mb-4" style="margin: 20px 0;">Filtrar por Curso:</label>
 
-					<div class="form-check form-check-inline">
+				<div class="form-check form-check-inline">
 
-						<input type="checkbox" class="form-check-input" id="cursoPrimero" name="curso" value="primero"
-							required title="Por favor, selecciona al menos un curso">
-						<label class="form-check-label" for="cursoPrimero">Primero</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input type="checkbox" class="form-check-input" id="cursoSegundo" name="curso" value="segundo">
-						<label class="form-check-label" for="cursoSegundo">Segundo</label>
-					</div>
+					<input type="checkbox" class="form-check-input" id="cursoPrimero" name="curso" value="primero"
+						required title="Por favor, selecciona al menos un curso">
+					<label class="form-check-label" for="cursoPrimero">Primero</label>
 				</div>
-				<div class="mb-4">
-					<button type="submit" class="btn btn-primary ml-2">Filtrar</button>
-					<a th:href="@{/listar}" class="btn btn-primary" formnovalidate>Mostrar Todos los Alumnos</a>
+				<div class="form-check form-check-inline">
+					<input type="checkbox" class="form-check-input" id="cursoSegundo" name="curso" value="segundo">
+					<label class="form-check-label" for="cursoSegundo">Segundo</label>
 				</div>
-			</form>
+			</div>
+			<div class="mb-4">
+				<button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+				<a th:href="@{/listar}" class="btn btn-primary" formnovalidate>Mostrar Todos los Alumnos</a>
+			</div>
+		</form>
 	</div>
 
 	<!-- Scripts de Bootstrap (JavaScript) para funcionalidad interactiva -->
