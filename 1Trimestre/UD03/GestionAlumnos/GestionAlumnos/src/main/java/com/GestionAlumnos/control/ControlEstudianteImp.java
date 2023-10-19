@@ -220,7 +220,7 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 		} else {
 			double promedio = alumnos.stream().mapToDouble(Alumno::getEdad).average().orElse(0);
 			String promedioFormateado = String.format("%.1f", promedio); // Formatea el promedio con un decimal
-			model.addAttribute("promedioEdad", promedio);
+			model.addAttribute("promedioEdad", promedioFormateado);
 		}
 		return "promedioEdad"; // Redirigir a la vista "promedioEdad".
 	}
