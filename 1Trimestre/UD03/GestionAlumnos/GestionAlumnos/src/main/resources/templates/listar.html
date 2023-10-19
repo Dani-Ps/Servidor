@@ -51,29 +51,28 @@
 			</div>
 		</form>
 		<form th:action="@{/filtrarPorCurso}" method="get" class="form form-inline mt-4" style="margin: 20px 0;">
-
 			<div class="form-group">
-
 				<label for="cursoFiltro" class="mr-2 mb-4" style="margin: 20px 0;">Filtrar por Curso:</label>
-
 				<div class="form-check form-check-inline">
-
-					<input type="checkbox" class="form-check-input" id="cursoPrimero" name="curso" value="primero"
-						required title="Por favor, selecciona al menos un curso">
+					<input type="checkbox" class="form-check-input" id="cursoPrimero" name="curso" value="primero">
 					<label class="form-check-label" for="cursoPrimero">Primero</label>
 				</div>
 				<div class="form-check form-check-inline">
 					<input type="checkbox" class="form-check-input" id="cursoSegundo" name="curso" value="segundo">
 					<label class="form-check-label" for="cursoSegundo">Segundo</label>
 				</div>
-			</div>
-			<div class="mb-4">
-				<button type="submit" class="btn btn-primary ml-2">Filtrar</button>
-				<a th:href="@{/listar}" class="btn btn-primary" formnovalidate>Mostrar Todos los Alumnos</a>
-				<a th:href="@{/crear}" class="btn btn-success">Crear Estudiante</a>
-
+				<input type="hidden" name="cursoSeleccionado" value="false" required>
+				<div class="mb-4">
+					<button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+				</div>
 			</div>
 		</form>
+
+		<div class="mb-4">
+			<a th:href="@{/listar}" class="btn btn-primary" formnovalidate>Mostrar Todos los Alumnos</a>
+			<a th:href="@{/crear}" class="btn btn-success">Crear Estudiante</a>
+
+		</div>
 	</div>
 
 	<!-- Scripts de Bootstrap (JavaScript) para funcionalidad interactiva -->

@@ -4,6 +4,7 @@
 package com.GestionAlumnos.control;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -196,13 +197,21 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	}
 
 	@GetMapping("/filtrarPorCurso")
-	public String filtrarPorCurso(@RequestParam("curso") String curso, Model model) {
-		// Filtrar estudiantes por curso y pasarlos al modelo.
-		List<Alumno> estudiantesFiltrados = alumnos.stream().filter(alumno -> alumno.getCurso().equalsIgnoreCase(curso))
-				.collect(Collectors.toList());
-		model.addAttribute("alumnos", estudiantesFiltrados);
-		return "listar"; // Redirigir a la vista de lista.
+	public String filtrarPorCurso(@RequestParam(value = "curso", required = false) String[] cursos, Model model) {
+	    if (cursos != null && cursos.length > 0) {
+	        // Al menos un curso se ha seleccionado, filtra por los cursos seleccionados
+	        List<Alumno> estudiantesFiltrados = alumnos.stream()
+	                .filter(alumno -> Arrays.stream(cursos)
+	                        .anyMatch(curso -> alumno.getCurso().equalsIgnoreCase(curso)))
+	                .collect(Collectors.toList());
+	        model.addAttribute("alumnos", estudiantesFiltrados);
+	    } else {
+	        // No se seleccionó ningún curso, muestra todos los estudiantes sin filtrar
+	        model.addAttribute("alumnos", alumnos);
+	    }
+	    return "listar"; // Redirigir a la vista de lista.
 	}
+
 
 	@GetMapping("/promedioEdad")
 	public String mostrarPromedioEdad(Model model) {
