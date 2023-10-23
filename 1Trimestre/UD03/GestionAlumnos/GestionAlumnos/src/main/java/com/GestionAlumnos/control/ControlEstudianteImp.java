@@ -212,17 +212,15 @@ public class ControlEstudianteImp implements ControlEstudianteI {
 	    return "listar"; // Redirigir a la vista de lista.
 	}
 
-
 	@GetMapping("/promedioEdad")
 	public String mostrarPromedioEdad(Model model) {
-		if (alumnos.isEmpty()) {
-			model.addAttribute("promedioEdad", 0.0); // Cuando no hay alumnos, se muestra 0.0 como un número
-		} else {
-			double promedio = alumnos.stream().mapToDouble(Alumno::getEdad).average().orElse(0);
-			String promedioFormateado = String.format("%.1f", promedio); // Formatea el promedio con un decimal
-			model.addAttribute("promedioEdad", promedioFormateado);
-		}
-		return "promedioEdad"; // Redirigir a la vista "promedioEdad".
+	    if (alumnos.isEmpty()) {
+	        model.addAttribute("promedioEdad", 0.0); // Cuando no hay alumnos, se muestra 0.0 como un número
+	    } else {
+	        double promedio = alumnos.stream().mapToDouble(Alumno::getEdad).average().orElse(0);
+	        model.addAttribute("promedioEdad", promedio);
+	    }
+	    return "promedioEdad"; // Redirigir a la vista "promedioEdad".
 	}
 
 	// Metodos para redirigir
