@@ -1,0 +1,26 @@
+<!-- fragmentos.html -->
+<!-- buscador.html -->
+<div th:fragment="buscador">
+    <form method="get" action="/buscar">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+<!-- Filtrar por Categoria -->
+<div th:fragment="filtrar">
+    <form method="get" action="/filtrar">
+        <label for="categoria">Categoria:</label>
+        <select name="categoria" id="categoria" required> 
+            <option value="">Selecciona una categoria</option>
+            <option th:each="c : ${categorias}" th:value="${c}" th:text="${c}"></option>
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+</div>
+<!-- Botón para agregar libro -->
+<div th:fragment="nuevo_libro">
+    <form method="get" action="/formulario">
+        <button type="submit">Nuevo libro</button>
+    </form>
+</div>

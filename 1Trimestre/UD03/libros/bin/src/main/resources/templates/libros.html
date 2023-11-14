@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<title>Libros</title>
+</head>
+
+<body>
+	<h1>Libros</h1>
+	<form th:action="@{'/cambiarIdioma'}" method="post">
+		<input type="hidden" name="lang" value="en" />
+		<button type="submit" th:text="#{idioma.ingles}">English</button>
+	</form>
+	<form th:action="@{'/cambiarIdioma'}" method="post">
+		<input type="hidden" name="lang" value="es" />
+		<button type="submit" th:text="#{idioma.espanol}">English</button>
+	</form>
+
+	<div th:replace="~{fragmentos :: nuevo_libro}"></div>
+	<div th:replace="~{fragmentos :: filtrar}"></div>
+	<table>
+		<tr>
+			<td><b>Titulo</b></td>
+			<td><b>Autor</b></td>
+			<td><b>Categoria</b></td>
+			<td><b>Precio</b></td>
+		<tr th:each="libro : ${libros}">
+			<td th:text="${libro.nombre}"></td>
+			<td th:text="${libro.autor}"></td>
+			<td th:text="${libro.categoria}"></td>
+			<td th:text="${libro.precio}"></td>
+			<td th:number="${libro.anoPublicacion}"></td>
+		</tr>
+		</tr>
+	</table>
+
+	<!-- Si el usuario no tiene libros favoritos o leídos, muestra un mensaje alentador -->
+	<div th:if="${libros.isEmpty()}">
+		<p>No hay libros de esa categoria</p>
+	</div>
+
+
+
+</body>
+
+</html>
