@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Lista de Coches</title>
+
+</head>
+
+<body>
+	<h1>Coches</h1>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Marca</th>
+			<th>Matrícula</th>
+			<th>Color</th>
+		</tr>
+		<tr th:each="coche : ${coches}">
+			<td th:text="${coche.id}"></td>
+			<td th:text="${coche.marca}"></td>
+			<td th:text="${coche.matricula}"></td>
+			<td th:text="${coche.color}"></td> 
+			<td><a th:href="@{/coche/editar/{id}(id=${coche.id})}">Editar</a></td>
+			<td><a th:href="@{/coche/eliminar/{id}(id=${coche.id})}">Eliminar</a></td>
+
+	</table>
+
+	<!-- Enlace para agregar un nuevo producto -->
+	<a th:href="@{/coche/nuevo}">Agregar Nuevo Producto</a>
+
+</body>
+
+</html>
