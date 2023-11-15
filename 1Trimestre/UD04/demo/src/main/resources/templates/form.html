@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Coche</title>
+</head>
+<body>
+    <h2>Formulario de Coche</h2>
+    <form th:action="@{/agregar}" th:object="${coche}" method="post">
+       	 <!-- Campo oculto para el ID del producto -->
+    <input type="hidden" name="id" th:value="*{id}" />
+        <div>
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" th:field="*{nombre}" />
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error en la nombre</span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" th:field="*{email}" />
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error en el email</span>
+        </div>
+        <div>
+            <label for="cuentaUsuario">Cuenta de usuario:</label>
+            <input type="text" id="cuentaUsuario" th:field="*{cuentaUsuario}" />
+            <span th:if="${#fields.hasErrors('color')}" th:errors="*{cuentaUsuario}">Error en el color</span>
+        </div>
+        <div>
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+</body>
+</html>

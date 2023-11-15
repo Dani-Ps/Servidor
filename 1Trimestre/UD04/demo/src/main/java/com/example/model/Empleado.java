@@ -19,6 +19,10 @@ public class Empleado {
 
 	@Column(name = "nombre")
 	private String nombre;
+	
+	@Column(name="email")
+	private String email;
+	
 
 	@OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL)
 	private CuentaUsuario cuentaUsuario;
@@ -46,5 +50,14 @@ public class Empleado {
 	public void setCuentaUsuario(CuentaUsuario cuentaUsuario) {
 		this.cuentaUsuario = cuentaUsuario;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 
 }
