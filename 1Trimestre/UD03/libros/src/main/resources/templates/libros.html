@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
@@ -12,7 +13,7 @@
 	</form>
 	<form th:action="@{'/cambiarIdioma'}" method="post">
 		<input type="hidden" name="lang" value="es" />
-		<button type="submit" th:text="#{idioma.espanol}">English</button>
+		<button type="submit" th:text="#{idioma.espanol}">Español</button>
 	</form>
 
 	<div th:replace="~{fragmentos :: nuevo_libro}"></div>
@@ -23,6 +24,7 @@
 			<td><b>Autor</b></td>
 			<td><b>Categoria</b></td>
 			<td><b>Precio</b></td>
+		</tr>
 		<tr th:each="libro : ${libros}">
 			<td th:text="${libro.nombre}"></td>
 			<td th:text="${libro.autor}"></td>
@@ -30,16 +32,12 @@
 			<td th:text="${libro.precio}"></td>
 			<td th:number="${libro.anoPublicacion}"></td>
 		</tr>
-		</tr>
 	</table>
 
 	<!-- Si el usuario no tiene libros favoritos o leídos, muestra un mensaje alentador -->
 	<div th:if="${libros.isEmpty()}">
 		<p>No hay libros de esa categoria</p>
 	</div>
-
-
-
 </body>
 
 </html>
