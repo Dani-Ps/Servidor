@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Coches</title>
+</head>
+
+<body>
+	<div th:replace="~{fragmentos :: idioma}"></div>
+	<div th:replace="~{fragmentos :: nuevo_coche}"></div>
+	<div th:replace="~{fragmentos :: filtrar}"></div>
+	<table>
+		<tr>
+			<td><b>Marca</b></td>
+			<td><b>Modelo</b></td>
+			<td><b>año</b></td>
+			<td><b>Precio</b></td>
+			<td><b>Fuente de energia</b></td>
+
+		<tr th:each="coche : ${coches}">
+			<td th:text="${coche.marca}"></td>
+			<td th:text="${coche.modelo}"></td>
+			<td th:text="${coche.ano}"></td>
+			<td th:text="${coche.precio}"></td>
+			<td th:text="${coche.fuenteEnergia}"></td>
+		</tr>
+		</tr>
+	</table>
+</body>
+
+</html>

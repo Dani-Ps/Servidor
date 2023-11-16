@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Coche</title>
+</head>
+<body>
+    <h2>Formulario de Coche</h2>
+    <form th:action="@{/agregar}" th:object="${coche}" method="post">
+       	 <!-- Campo oculto para el ID del producto -->
+    <input type="hidden" name="id" th:value="*{id}" />
+        <div>
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" th:field="*{marca}" />
+            <span th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}">Error en la marca</span>
+        </div>
+        <div>
+            <label for="matricula">Matrícula:</label>
+            <input type="text" id="matricula" th:field="*{matricula}" />
+            <span th:if="${#fields.hasErrors('matricula')}" th:errors="*{matricula}">Error en la matrícula</span>
+        </div>
+        <div>
+            <label for="color">Color:</label>
+            <input type="text" id="color" th:field="*{color}" />
+            <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Error en el color</span>
+        </div>
+        <div>
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+</body>
+</html>

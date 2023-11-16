@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Lista de Empleados</title>
+
+</head>
+
+<body>
+	<h1>Empelados</h1>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Email</th>
+			<th>Cuenta de usuario</th>
+		</tr>
+		<tr th:each="empleado : ${empleados}">
+			<td th:text="${empleado.id}"></td>
+			<td th:text="${empleado.nombre}"></td>
+			<td th:text="${empleado.email}"></td>
+			<td th:text="${empleado.cuentaUsuario}"></td> 
+			<td><a th:href="@{/empleado/editar/{id}(id=${empleado.id})}">Editar</a></td>
+			<td><a th:href="@{/empleado/eliminar/{id}(id=${empleado.id})}">Eliminar</a></td>
+
+	</table>
+
+	<!-- Enlace para agregar un nuevo producto -->
+	<a th:href="@{/coche/nuevo}">Agregar Nuevo Empleado</a>
+
+</body>
+
+</html>

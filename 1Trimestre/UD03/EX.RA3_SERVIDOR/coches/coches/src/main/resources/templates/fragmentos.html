@@ -1,0 +1,26 @@
+<div th:fragment="idioma">
+	<form method="get" action="/idioma">
+		<select name="idioma" id="idioma" required>
+			<option value="">Selecciona un idioma</option>
+			<option th:each="i : ${idioma}" th:value="${i}" th:text="${i}"></option>
+		</select>
+		<button type="submit"><span th:text="#{boton.idioma}"></span></button>
+	</form>
+</div>
+<!-- Botón para agregar coche -->
+<div th:fragment="nuevo_coche">
+	<form method="get" action="/formulario">
+		<button type="submit"><span th:text="#{boton.nuevo}"></span></button>
+	</form>
+</div>
+
+<!-- Filtrar por Fuente de Energia -->
+<div th:fragment="filtrar">
+	<form method="get" action="/filtrar">
+		<select name="fuenteEnergia" id="fuenteEnergia" required>
+			<option value="">Selecciona una fuente</option>
+			<option th:each="tipo : ${fuenteEnergia}" th:value="${tipo}" th:text="${tipo}"></option>
+		</select>
+		<button type="submit">Filtrar</button>
+	</form>
+</div>

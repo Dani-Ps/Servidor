@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+	<title th:text="#{titulo.coches}">Coches</title>
+</head>
+	<body>	
+		<div th:replace="~{fragmentos :: idioma}"></div>
+		<h1 th:text="${mensaje}">Texto por defecto</h1>
+		<h2 th:text="#{message.title}">Texto por defecto</h2>
+	</body>
+</html>

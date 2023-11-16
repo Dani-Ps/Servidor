@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Agregar Coche</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}" href="/css/estilos.css">
+
+</head>
+
+<body>
+	<h2>Agregar Coche</h2>
+
+	<form th:action="@{/nuevo_coche}" th:object="${coche}" method="post">
+		<div>
+			<label for="marca">Marca:</label>
+			<input type="text" th:field="*{marca}" id="marca">
+			<span th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}" class="alert alert-danger">Error en la
+				marca</span>
+		</div>
+		<div>
+			<label for="modelo">Modelo:</label>
+			<input type="text" th:field="*{modelo}" id="modelo">
+			<span th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}" class="alert alert-danger">Error en
+				modelo</span>
+		</div>
+		<div>
+			<label for="ano">Año:</label>
+			<input type="number" th:field="*{ano}" id="ano">
+			<span th:if="${#fields.hasErrors('ano')}" th:errors="*{ano}" class="alert alert-danger">Error en
+				año</span>
+		</div>
+		<div>
+			<label for="precio">Precio:</label>
+			<input type="number" th:field="*{precio}" id="precio">
+			<span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}" class="alert alert-danger">Error en
+				Precio</span>
+		</div>
+		<div>
+			<label for="fuenteEnergia">Fuente de energia:</label>
+			<select name="fuenteEnergia" id="fuenteEnergia" required>
+				<option value=""><span th:text="#{coche.fuenteEnergia}"></span></option>
+				<option th:each="tipo : ${fuenteEnergia}" th:value="${tipo}" th:text="${tipo}"></option>
+			</select>
+			<span th:if="${#fields.hasErrors('fuenteEnergia')}" th:errors="*{fuenteEnergia}"
+				class="alert alert-danger">Error en
+				fuente de energia</span>
+		</div>
+
+		<div>
+			<button type="submit">Agregar</button>
+		</div>
+	</form>
+</body>
+
+</html>
