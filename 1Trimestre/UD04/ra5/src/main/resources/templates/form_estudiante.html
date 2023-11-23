@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Formulario estudiantes</title>
+	</head>
+	<body>
+		<form th:action="@{/agregar}" th:object="${estudiante}" method="post">
+			<input type="hidden" th:field="*{id}">
+			<div>
+				<label>Nombre</label>
+				<input type="text" th:field="*{nombre}"/>
+				<span style="color:red;" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+			</div>
+			<div>
+				<label>Edad</label>
+				<input type="number" th:field="*{edad}"/>
+				<span style="color:red;" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></span>
+			</div>
+			<div>
+				<label>Curso</label>
+				<input type="text" th:field="*{curso}"/>
+				<span style="color:red;" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}"></span>
+			</div>
+			<button type="submit">Crear estudiante</button>
+		</form>
+	</body>
+</html>

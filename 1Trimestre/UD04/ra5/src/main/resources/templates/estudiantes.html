@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Pagina principal</title>
+	</head>
+	<body>
+		<table th:if="${#lists.size(estudiantes) > 0}">
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Edad</th>
+				<th>Curso</th>
+			</tr>
+			<tr th:each="estudiante : ${estudiantes}">
+				<td th:text="${estudiante.id}"></td>
+				<td th:text="${estudiante.nombre}"></td>
+				<td th:text="${estudiante.edad}"></td>
+				<td th:text="${estudiante.curso}"></td>
+				<td><a th:href="@{/estudiante/editar/{id}(id=${estudiante.id})}">Editar</a></td>
+				<td><a th:href="@{/estudiante/eliminar/{id}(id=${estudiante.id})}">Eliminar</a></td>
+			</tr>
+		</table>
+		<div th:unless="${#lists.size(estudiantes) > 0}">No hay estudiantes que mostrar</div>
+		<a th:href="@{/estudiante/nuevo}">Crear estudiante nuevo</a>
+	</body>
+</html>
