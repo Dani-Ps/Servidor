@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Información del Autor</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <h1>Información del Autor</h1>
+    <div>
+        <h2>Nombre del Autor: <span th:text="${autor.nombre}"></span></h2>
+        <!-- <p>Bibliografía: <span th:text="${autor.biografia}"></span></p> -->
+      
+    </div>
+
+    <h2>Libros del Autor</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Categoría</th>
+             
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="libro : ${autor.libros}">
+                <td th:text="${libro.titulo}"></td>
+                <td th:text="${libro.categoria}"></td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/libros" class="button">Volver a libros</a>
+</body>
+</html>

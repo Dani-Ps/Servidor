@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	 <link rel="stylesheet" href="/css/estilos.css">
+	 <title>Detalles</title>
+</head>
+
+<body>
+	<!-- Mensaje de éxito -->
+<div th:if="${mensajeExito}" class="alert alert-success">
+    <p th:text="${mensajeExito}"></p>
+</div>
+
+<!-- Mensaje de error -->
+<div th:if="${mensajeError}" class="alert alert-danger">
+    <p th:text="${mensajeError}"></p>
+</div>
+
+	<h2>Detalles del Estudiante</h2>
+	<div>
+		<p>Nombre: <span th:text="${estudiante.nombre}"></span></p>
+		<!-- Mostrar otros detalles del estudiante -->
+	</div>
+	<div>
+		<h3>Cursos</h3>
+		<ul>
+			<li th:each="curso : ${estudiante.cursos}">
+				<span th:text="${curso.titulo}"></span>
+			</li>
+		</ul>
+	</div>
+	<!-- Formulario para añadir cursos -->
+	<form th:action="@{/estudiantes/agregarCurso}" method="post">
+		<!-- Campos del formulario -->
+		<input type="hidden" name="estudianteId" th:value="${estudiante.id}" />
+		<select name="cursoId">
+			<option value="">Seleccione un curso</option>
+			<th:block th:each="curso : ${cursos}">
+				<option th:value="${curso.id}" th:text="${curso.titulo}"></option>
+			</th:block>
+		</select>
+
+		<button type="submit">Añadir Curso</button>
+	</form>
+</body>
+
+</html>

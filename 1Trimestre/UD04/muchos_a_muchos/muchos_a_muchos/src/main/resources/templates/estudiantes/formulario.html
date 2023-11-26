@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Agregar Estudiante</title>
+	<link rel="stylesheet" href="/css/estilos.css">
+</head>
+
+<body>
+
+	<h1>Agregar Nuevo Estudiante</h1>
+
+
+	<form th:action="@{/estudiantes/nuevo}" th:object="${estudiante}" method="post">
+		<div>
+			<!-- Campo Nombre -->
+			<label for="nombre">Nombre:</label>
+			<input type="text" id="nombre" name="nombre" th:field="*{nombre}" />
+			<div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="alert alert-danger">Error en el
+				Nombre</div>
+		</div>
+		<div>
+			<!-- Campo Email -->
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" th:field="*{email}" />
+			<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger">Error en el Email
+			</div>
+		</div>
+		<div>
+			<!-- Campo Fecha de Nacimiento -->
+			<label for="fechaNacimiento">Fecha de Nacimiento:</label>
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" th:field="*{fechaNacimiento}" />
+			<div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"
+				class="alert alert-danger">Error en la Fecha de
+				Nacimiento</div>
+		</div>
+		<button type="submit">Guardar</button>
+	</form>
+
+</body>
+
+</html>

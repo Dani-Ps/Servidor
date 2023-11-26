@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Libro</title>
+     <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <h1>Formulario de Libro</h1>
+    <form th:action="@{/libros}" th:object="${libro}" method="post">
+		<input type="hidden"  th:field="*{id}" th:if="*{id}">
+        <div>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" th:field="*{titulo}" >
+              <p th:if="${#fields.hasErrors('titulo')}" class="error" th:errors="*{titulo}" />
+        </div>
+        <div>
+            <label for="autor">Autor:</label>
+                <select id="autor" th:field="*{autor.id}">
+				
+                <option th:each="a : ${autores}" 
+                        th:value="${a.id}" 
+                        th:text="${a.nombre}"
+                        th:selected="${a.id == libro.autor.id}">Autor
+                    
+                </option>
+            </select>
+            
+        </div>
+        <div>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" th:field="*{categoria}">
+                <option th:each="categoria : ${categorias}" 
+                        th:value="${categoria}" 
+                        th:text="${categoria}">
+                    Categoría
+                </option>
+            </select>
+              <p th:if="${#fields.hasErrors('categoria')}" th:errorclass="error" th:errors="*{categoria}" />
+        </div>
+        <div>
+            <button type="submit" class="button">Guardar</button>
+        </div>
+    </form>
+    <a href="/libros" class="button">Cancelar y volver al listado</a>
+</body>
+</html>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Autor</title>
+       <link rel="stylesheet" href="/css/estilos.css">
+
+</head>
+<body>
+    <h1>Formulario de Autor</h1>
+    <form th:action="@{/libros/autores/nuevo}" th:object="${autor}" method="post">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" >
+            <p th:if="${#fields.hasErrors('nombre')}" class="error" th:errors="*{nombre}" />
+        </div>
+    
+        <div>
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+    <a href="/libros">Libros</a>
+</body>

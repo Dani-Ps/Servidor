@@ -1,0 +1,39 @@
+/* estilos.css */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: #3498db;
+  color: #fff;
+  border: 1px solid #3498db;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Cambia el color de fondo cuando se pasa el mouse por encima */
+.button:hover {
+  background-color: #2980b9;
+}
+
+    .error {
+        color: red;
+    }
