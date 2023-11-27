@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudiantes por Curso</title>
+        	<link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <h1>Seleccione un Curso</h1>
+
+    <form th:action="@{/estudiantes/curso}" method="get">
+        <select name="cursoId">
+            <option value="">--Seleccione un Curso--</option>
+            <option th:each="curso : ${cursos}" 
+                    th:value="${curso.id}" 
+                    th:text="${curso.titulo}">
+                Curso
+            </option>
+        </select>
+        <button type="submit">Ver Estudiantes</button>
+    </form>
+
+  <h2>Estudiantes en el Curso</h2>
+    <div th:if="${estudiantes}">
+		<h1 th:text="${curso.titulo}"></h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Fecha de Nacimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="estudiante : ${estudiantes}">
+                    <td th:text="${estudiante.nombre}"></td>
+                    <td th:text="${estudiante.email}"></td>
+                    <td th:text="${estudiante.fechaNacimiento}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <a th:href="@{/estudiantes/nuevo}" class="button">Añadir Nuevo Estudiante</a>
+</body>
+</html>
+
